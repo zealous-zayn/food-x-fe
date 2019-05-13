@@ -1,0 +1,8 @@
+.scrolling-wrapper-flexbox {
+    height: 40vh;
+    overflow-y: auto;
+}
+
+hr{
+    margin: 5px
+}
