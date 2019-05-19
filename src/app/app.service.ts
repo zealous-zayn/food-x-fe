@@ -20,4 +20,33 @@ export class AppService {
   public getAllProduct(): Observable<any>{
     return this._http.get(`${this.baseUrl}/get-all-products`)
   }
+
+  public addPredict(data):Observable<any>{
+    const params = new HttpParams()
+      .set('id', data.productId)
+      .set('predictedValue', data.predictedValue)
+
+     return this._http.put(`${this.baseUrl}/prdiction-update`, params)
+  }
+
+  public placeOrder(data): Observable<any>{
+    const params = new HttpParams()
+      .set('customerName', data.customerName)
+      .set('orderDetails', JSON.stringify(data.orderDetails))
+
+    return this._http.post(`${this.baseUrl}/create-order`, params)
+  }
+
+  public getOrders(): Observable<any>{
+    return this._http.get(`${this.baseUrl}/get-orders`)
+  }
+
+  public doneOrder(data): Observable<any>{
+    const params = new HttpParams()
+      .set('orderId', data.orderId)
+      .set('productId', data.productId)
+      .set('quantity', data.quantity)
+
+    return this._http.post(`${this.baseUrl}/done-product`, params)
+  }
 }

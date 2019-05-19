@@ -10,13 +10,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { KitchenScreenComponent } from './kitchen-screen/kitchen-screen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrderComponent,
     AddProductComponent,
-    PredictionComponent
+    PredictionComponent,
+    KitchenScreenComponent
   ],
   imports: [
     BrowserModule,

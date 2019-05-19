@@ -20,13 +20,15 @@ export class AddProductComponent implements OnInit {
   }
 
   public addProduct(){
+    if(this.productForm.value.productValue === undefined || this.productForm.value.productValue ===null){
+      this.toastr.error("Please Add Product and the value","Warning")
+    } else {
     const data = {
       productName : this.productForm.value.productName,
       productValue : this.productForm.value.productValue
     }
     this.appService.addProduct(data).subscribe(
       (response)=>{
-        console.log(response)
         if(response.status == 200){
         this.productForm.reset()
         this.toastr.success(response.message)
@@ -35,5 +37,6 @@ export class AddProductComponent implements OnInit {
         }
       }
     )
+    }
   }
 }

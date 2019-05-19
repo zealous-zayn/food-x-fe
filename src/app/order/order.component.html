@@ -13,33 +13,51 @@
             </button>
           </div>
           <div class="modal-body">
-              <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Product Name</th>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  <tbody *ngFor="let item of order, let i = index">
-                    <tr>
-                      <th scope="row">{{i+1}}</th>
-                      <td>{{item.product_name}}</td>
-                      <td>{{item.quantity}}</td>
-                      <td>{{item.product_value*item.quantity}}&nbsp;<i class="fas fa-rupee-sign"></i></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let item of order, let i = index">
+                      <tr>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{item.product_name}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.product_value*item.quantity}}&nbsp;<i class="fas fa-rupee-sign"></i></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 <div style="text-align: center; font-size: 25px"><a >Total Price - <strong>{{totalValue}}&nbsp;<i class="fas fa-rupee-sign"></i></strong></a></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Place Order</button>
+            <button type="button" class="btn btn-primary" (click)="confirm()" data-toggle="modal" data-target="#successModal" data-dismiss="modal">Place Order</button>
           </div>
         </div>
       </div>
     </div>
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="font-size: 30px; color: Grey">Receipt</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <a style="font-size: 20p; font-style: bold">{{message}} <strong style="color: green">{{orderConfirm.order_id}}</strong></a>
+            </div>
+            <div class="modal-footer"style="justify-content: center">
+              <a style="font-size: 30px; color: Red"><strong>Thank You !!</strong></a>
+            </div>
+          </div>
+        </div>
+      </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active my-2 my-lg-0">
@@ -50,16 +68,16 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Kitchen Screen</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/kitchen-screen']">Kitchen Screen</button>
     </form>
   </div>
 </nav>
 <div class="container">
-<form class="container p-2">
+<form class="container p-2" [formGroup]="orderForm">
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Customer Name :-</label>
     <div class="col-sm-8">
-      <input type="email" class="form-control" placeholder="eg: Jack Daniel">
+      <input type="email" class="form-control" placeholder="eg: Jack Daniel" formControlName="customerName">
     </div>
   </div>
   <hr>
@@ -98,6 +116,6 @@
     </div>
   </div>
 </form>
-<button class="btn btn-warning" style="color: white;">Reste </button>
-<button class="btn btn-success" style="margin-left:20px; float: right;" (click)="confirm()" data-toggle="modal" data-target="#exampleModal">Confirm Order </button>
+<button class="btn btn-warning" style="color: white;" (click)="reset()">Reset </button>
+<button class="btn btn-success" style="margin-left:20px; float: right;"  data-toggle="modal" data-target="#exampleModal">Confirm Order </button>
 </div>

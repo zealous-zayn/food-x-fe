@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <strong><a class="navbar-brand" [routerLink]="['/create-order']" style="color: red; font-size: 24px; border: 2px solid black; padding: 6px; border-radius: 10px">Food-X</a></strong>
+</nav>
+<div *ngIf="!toggle" style="padding: 30px;display: flex; justify-content: center;"><a style="font-size: 30px;">No orders in queue</a></div>
+<table class="table table-hover" *ngIf="toggle">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Created-till-now</th>
+        <th>Predictted</th>
+        <th>Status </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of allOders, let i = index">
+      <tr>
+        <th scope="row">{{item.product_name}}</th>
+        <td>{{item.quantity}}</td>
+        <td>{{item.createdTillNow}}</td>
+        <td>{{item.predicted}}</td>
+        <td *ngIf="!item.status"><button class="btn btn-warning" (click)="done(item)">Pending</button></td>
+        <td *ngIf="item.status"><button class="btn btn-success">Done</button></td>
+      </tr>
+    </tbody>
+  </table>
