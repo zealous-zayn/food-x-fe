@@ -85,17 +85,10 @@
     <label class="col-sm-2 col-form-label">Product :-</label>
     <div class="col-sm-8">
     <div class="row scrolling-wrapper-flexbox">
-<<<<<<< HEAD
-      <ul class="col-md-6" *ngFor="let product of products" style="margin-bottom: 5px">
-      <li class="card" style="width: 18rem;" >
-        <div class="card-body">
-          <h6 class="card-subtitle mb-2 text-muted" style="text-align: center">{{product.product_name}}</h6>
-=======
       <ul class="col-md-6" *ngFor="let product of products, let i = index" style="margin-bottom: 5px">
       <li class="card" style="width: 18rem;" >
         <div class="card-body">
           <h6 class="card-subtitle m b-2 text-muted" style="text-align: center">{{product.product_name}}</h6>
->>>>>>> 73ab4905700460c1a235faae602212f8cf577c3e
           <hr>
           <nav class="row" style="display: flex; justify-content :space-around">
             <a style="color: grey; align-self: center">Price:- <strong>{{product.product_value}}</strong>&nbsp;<i class="fas fa-rupee-sign"></i></a>
@@ -103,11 +96,7 @@
                 <li class="page-item">
                   <a class="page-link" style="color:#007bff; cursor: pointer;" (click)="decrease(i, product)"><strong>-</strong></a>
                 </li>
-<<<<<<< HEAD
-                <li class="page-item"><a class="page-link">0</a></li>
-=======
                 <li class="page-item"><a class="page-link">{{product.quantity}}</a></li>
->>>>>>> 73ab4905700460c1a235faae602212f8cf577c3e
                 <li class="page-item">
                   <a class="page-link" style="color:#007bff; cursor: pointer;" (click)="increase(i, product)"><strong>+</strong></a>
                 </li>

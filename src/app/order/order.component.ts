@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-import { AppService } from '../app.service';
-=======
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../app.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl } from '@angular/forms';
 import {SocketService} from '../socket.service'
 import { from } from 'rxjs';
->>>>>>> 73ab4905700460c1a235faae602212f8cf577c3e
 
 @Component({
   selector: 'app-order',
@@ -16,20 +11,6 @@ import { from } from 'rxjs';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-<<<<<<< HEAD
-  public products : String;
-
-
-  constructor(public appService : AppService) { }
-
-  ngOnInit() {
-    this.appService.getProduct().subscribe(
-      (resposnse)=>{
-        console.log(resposnse)
-        this.products = resposnse['data'];
-      }
-    )
-=======
   public products = []
   public order = []
   public orderConfirm = { order_id: "" }
@@ -115,7 +96,6 @@ export class OrderComponent implements OnInit {
     })
     this.order = []
     this.totalValue = 0
->>>>>>> 73ab4905700460c1a235faae602212f8cf577c3e
   }
 
 }

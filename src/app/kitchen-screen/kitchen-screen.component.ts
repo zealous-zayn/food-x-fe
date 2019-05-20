@@ -32,8 +32,13 @@ export class KitchenScreenComponent implements OnInit {
 
     this.socketService.update().subscribe((data)=>{
       this.toastr.info(data)
+      this.allOders = []
       this.getAllOrders()
     })
+  }
+
+  public notifyOrder = (data)=>{
+    this.socketService.orderUpdate(data)
   }
 
   public getAllOrders(){
@@ -44,7 +49,6 @@ export class KitchenScreenComponent implements OnInit {
             order.order_detials.forEach(item=>{
               this.allProducts.forEach(product=>{
                 if(product.product_id === item.product_id){
-                  console.log(item)
                   this.allOders.push(
                     {
                       orderId : order.order_id,
@@ -78,6 +82,7 @@ export class KitchenScreenComponent implements OnInit {
         if(response.status ===200){
           this.toastr.success(response.message)
           item.status = true
+          this.notifyOrder(response.message)
         } else {
           this.toastr.error(response.message)
         }

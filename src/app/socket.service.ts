@@ -30,7 +30,7 @@ export class SocketService {
   public update = ()=>{
     return Observable.create((observer)=>{
       this.socket.on('update', (data)=>{
-        console.log(data)
+        observer.next(data)
       })
     })
   }

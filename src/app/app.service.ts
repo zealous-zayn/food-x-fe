@@ -1,33 +1,11 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
-import {observable} from 'rxjs';
-
-=======
 import {HttpClient, HttpParams} from '@angular/common/http'
 import { Observable } from 'rxjs';
->>>>>>> 73ab4905700460c1a235faae602212f8cf577c3e
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-<<<<<<< HEAD
-public baseUrl = "http://localhost:3000";
-
-  constructor(public http : HttpClient) { 
-    console.log("service called")
-    
-  }
-
-  public getProduct = ()=>{
-    const header = new HttpHeaders()
-      .set('my-header', 'header')
-      console.log(header)
-    return this.http.post(`${this.baseUrl}/get-all-products`, null ,{headers:header})
-  }
-
-=======
   public baseUrl = 'http://localhost:3000'
   constructor(public _http : HttpClient) { }
 
@@ -71,5 +49,4 @@ public baseUrl = "http://localhost:3000";
 
     return this._http.post(`${this.baseUrl}/done-product`, params)
   }
->>>>>>> 73ab4905700460c1a235faae602212f8cf577c3e
 }
