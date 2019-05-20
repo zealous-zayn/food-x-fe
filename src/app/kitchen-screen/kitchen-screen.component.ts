@@ -3,6 +3,7 @@ import { AppService } from '../app.service';
 import { ToastrService } from 'ngx-toastr';
 import * as saveAs from 'file-saver';
 import { SocketService } from '../socket.service';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-kitchen-screen',
@@ -16,29 +17,33 @@ export class KitchenScreenComponent implements OnInit {
   constructor(public appService : AppService, public toastr : ToastrService, public socketService : SocketService) { }
 
   ngOnInit() {
+
+    this.getAllProduct()
+    this.socketService.update().subscribe( (data)=>{
+      this.toastr.info(data)
+      this.allProducts=[]
+       this.getAllProduct()
+    })
+  }
+
+  public notifyOrder = (data)=>{
+    this.socketService.orderUpdate(data)
+  }
+
+  public getAllProduct(){
     this.appService.getAllProduct().subscribe(
       (response)=>{
         if (response.status == 200){
           response.data.forEach(product => {
             this.allProducts.push(product)
           });
+          this.allOders = []
+          this.getAllOrders()
         } else{
           this.toastr.error(response.message)
         }
       }
     )
-
-    this.getAllOrders()
-
-    this.socketService.update().subscribe((data)=>{
-      this.toastr.info(data)
-      this.allOders = []
-      this.getAllOrders()
-    })
-  }
-
-  public notifyOrder = (data)=>{
-    this.socketService.orderUpdate(data)
   }
 
   public getAllOrders(){
@@ -64,6 +69,7 @@ export class KitchenScreenComponent implements OnInit {
             })
           });
           this.toggle = true
+          window.scrollTo(0,document.body.scrollHeight)
         } else{
           this.toastr.error(response.message)
         }
