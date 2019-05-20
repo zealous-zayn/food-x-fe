@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import { ToastrService } from 'ngx-toastr';
-import { initNgModule } from '@angular/core/src/view/ng_module';
+import * as saveAs from 'file-saver';
 import { SocketService } from '../socket.service';
 
 @Component({
@@ -86,6 +86,16 @@ export class KitchenScreenComponent implements OnInit {
         } else {
           this.toastr.error(response.message)
         }
+      }
+    )
+  }
+
+  public export(){
+    this.appService.downloadFile(this.allOders).subscribe(
+      (response)=>{
+        const file = new File([response], 'report.xlsx',
+        { type: 'application/vnd.ms-excel' });
+        saveAs(file)
       }
     )
   }

@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar  navbar-light bg-light">
     <strong><a class="navbar-brand" [routerLink]="['/create-order']" style="color: red; font-size: 24px; border: 2px solid black; padding: 6px; border-radius: 10px">Food-X</a></strong>
+    <a style="float: right"><button class="btn btn-info" (click)="export()">Export</button></a>
 </nav>
 <div *ngIf="!toggle" style="padding: 30px;display: flex; justify-content: center;"><a style="font-size: 30px;">No orders in queue</a></div>
 <table class="table table-hover" *ngIf="toggle">

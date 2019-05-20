@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http'
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http'
+
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -48,5 +49,15 @@ export class AppService {
       .set('quantity', data.quantity)
 
     return this._http.post(`${this.baseUrl}/done-product`, params)
+  }
+
+  public downloadFile(data): Observable<any>{
+    const params = new HttpParams()
+     .set('orderArr', JSON.stringify(data))
+
+    
+
+
+    return this._http.post(`${this.baseUrl}/download-file`, params,{responseType : 'blob'})
   }
 }
