@@ -3,6 +3,10 @@
     overflow-y: auto;
 }
 
+.scrolling-wrapper-flexbox::-webkit-scrollbar {
+    display: none;
+}
+
 hr{
     margin: 5px
 }
