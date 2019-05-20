@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { OrderComponent } from './order/order.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { PredictionComponent } from './prediction/prediction.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PredictionComponent } from './prediction/prediction.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
